@@ -3,12 +3,13 @@ import { DocumentContext } from '@/common/context/document';
 import DocumentBuilderLayout from '@/components/DocumentBuilderLayout';
 import FormContainer from '@/components/FormContainer';
 import PreviewContainer from '@/components/PreviewContainer';
-import { convertFormToJson, convertJsonToForm } from '@/utils/formatData';
+import { convertJsonToForm } from '@/utils/formatData';
 import { getConfigFile } from '@/utils/helpers';
 
 import { Box, createStyles } from '@mantine/core';
 import { formList, useForm } from '@mantine/form';
 import { useListState } from '@mantine/hooks';
+import { useRouter } from 'next/router';
 
 import React, { useContext, useEffect, useState } from 'react';
 
@@ -24,10 +25,15 @@ const DocumentCreator = () => {
   const { documentType, documentContent } = useContext(DocumentContext);
   const [state, handlers] = useListState(documentContent);
   const { classes } = useStyles();
+  const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsBrowser(true);
+    }
+    // check if documentType or documentContent is empty then redirect to /
+    if (documentType === '' || documentContent.length === 0) {
+      router.push('/');
     }
   }, []);
 

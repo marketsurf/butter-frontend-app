@@ -11,10 +11,6 @@ const links = [
     link: '/document-creator',
     label: 'Document Creator',
   },
-  {
-    link: '/verify',
-    label: 'Verify your document',
-  },
 ];
 
 interface LayoutProps {
