@@ -3,6 +3,7 @@ import { createStyles, Navbar, ScrollArea, Text } from '@mantine/core';
 import { GripVertical } from 'tabler-icons-react';
 
 import { Draggable, Droppable } from 'react-beautiful-dnd';
+import HelpButton from '../HelpButton';
 
 const useStyles = createStyles((theme) => {
   return {
@@ -82,6 +83,9 @@ const Sidebar = ({ documentData }: SidebarProps) => {
 
   return (
     <Navbar height="calc(100vh - 60px)" width={{ sm: 300, md: 400 }} p="md">
+      <Navbar.Section px="lg" py="sm">
+        <HelpButton />
+      </Navbar.Section>
       <Navbar.Section grow component={ScrollArea} mx="-xs" px="lg">
         <Droppable droppableId="ocr-content" direction="vertical">
           {(provided) => (
