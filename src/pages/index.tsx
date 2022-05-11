@@ -11,6 +11,7 @@ import {
   Stack,
   Stepper,
   Text,
+  useMantineTheme,
 } from '@mantine/core';
 import Link from 'next/link';
 import React, { useContext, useEffect, useState } from 'react';
@@ -40,6 +41,12 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  selectButton: {
+    backgroundColor: theme.colors.yellow[6],
+    '&:hover': {
+      backgroundColor: theme.colors.yellow[5],
+    },
+  },
 }));
 
 const Home = () => {
@@ -54,6 +61,7 @@ const Home = () => {
   const { documentContent, documentType } = useContext(DocumentContext);
 
   const { classes } = useStyles();
+  const theme = useMantineTheme();
 
   // TODO: Fix the Next.js SSR issue regarding localStorage
   useEffect(() => {
@@ -63,7 +71,12 @@ const Home = () => {
 
   return (
     <Layout>
-      <Stepper active={active} onStepClick={setActive} breakpoint="sm">
+      <Stepper
+        active={active}
+        onStepClick={setActive}
+        breakpoint="sm"
+        color="yellow"
+      >
         <Stepper.Step
           label="Step 1"
           description="Upload Your File"
@@ -97,7 +110,9 @@ const Home = () => {
               Creator.
             </Text>
             <Link href="/document-creator" passHref>
-              <Button component="a">Go to Document Creator</Button>
+              <Button component="a" className={classes.selectButton}>
+                Go to Document Creator
+              </Button>
             </Link>
           </Stack>
         </Stepper.Completed>
@@ -109,6 +124,7 @@ const Home = () => {
         </Button>
         <Button
           onClick={nextStep}
+          className={classes.selectButton}
           disabled={
             active === 3 ||
             (!isDocumentUploaded && active === 0) ||

@@ -33,7 +33,7 @@ const useStyles = createStyles((theme) => ({
     //     ? theme.colors.dark[8]
     //     : theme.colors.blue[1],
     boxShadow: `${theme.shadows.md} !important`,
-    border: `1px solid ${theme.colors.blue[6]}`,
+    border: `1px solid ${theme.colors.yellow[6]}`,
   },
 }));
 

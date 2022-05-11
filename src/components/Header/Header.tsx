@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  Box,
   Burger,
   Container,
   createStyles,
@@ -11,6 +12,7 @@ import { useBooleanToggle } from '@mantine/hooks';
 import LightDarkModeSwitcher from '../LightDarkModeSwitcher';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ButterLogo from '../ButterLogo';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -18,6 +20,10 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     height: '100%',
+  },
+
+  logoContainer: {
+    width: '55px',
   },
 
   links: {
@@ -57,10 +63,9 @@ const useStyles = createStyles((theme) => ({
     '&, &:hover': {
       backgroundColor:
         theme.colorScheme === 'dark'
-          ? theme.fn.rgba(theme.colors[theme.primaryColor][9], 0.25)
-          : theme.colors[theme.primaryColor][0],
-      color:
-        theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 3 : 7],
+          ? theme.fn.rgba(theme.colors.yellow[3], 0.2)
+          : theme.colors.yellow[0],
+      color: theme.colors.yellow[theme.colorScheme === 'dark' ? 4 : 7],
     },
   },
 }));
@@ -87,9 +92,12 @@ const Header = ({ links }: Header) => {
   ));
 
   return (
-    <MantineHeader height={60}>
+    <MantineHeader height={70}>
       <Container className={classes.header}>
-        <Title>BuTTer</Title>
+        <Box className={classes.logoContainer}>
+          <ButterLogo />
+        </Box>
+        {/* <Title>BuTTer</Title> */}
         <Group spacing={5} className={classes.links}>
           {items}
           <LightDarkModeSwitcher />

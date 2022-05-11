@@ -76,12 +76,7 @@ const useStyles = createStyles((theme) => ({
   },
   mainLinkActive: {
     '&, &:hover': {
-      // backgroundColor:
-      //   theme.colorScheme === 'dark'
-      //     ? theme.fn.rgba(theme.colors[theme.primaryColor][9], 0.25)
-      //     : theme.colors[theme.primaryColor][0],
-      color:
-        theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 7],
+      color: theme.colors.yellow[theme.colorScheme === 'dark' ? 4 : 7],
     },
   },
 }));
@@ -119,17 +114,6 @@ const PreviewContainer = ({ form }: PreviewContainerProps) => {
 
   return (
     <div className={cx(classes.wrapper, { [classes.wrapperClose]: !opened })}>
-      {/* {!opened && <MinimizeButton />}
-      {opened && (
-        <Button
-          className={classes.minimizeButton}
-          leftIcon={<ArrowBarRight />}
-          variant="subtle"
-          onClick={handlers.toggle}
-        >
-          Minimize
-        </Button>
-      )} */}
       <MinimizeButton />
       <Transition
         mounted={opened}
@@ -148,12 +132,6 @@ const PreviewContainer = ({ form }: PreviewContainerProps) => {
           </>
         )}
       </Transition>
-      {/* {opened && (
-        <>
-          <Text className={classes.previewText}>Preview:</Text>
-          <Prism language="json">{JSON.stringify(mockForm, null, 2)}</Prism>
-        </>
-      )} */}
     </div>
   );
 };

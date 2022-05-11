@@ -50,6 +50,32 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colors.gray[5],
     border: `1px solid ${theme.colors.gray[2]}`,
   },
+  button: {
+    backgroundColor:
+      theme.colorScheme === 'dark'
+        ? theme.colors.yellow[5]
+        : theme.colors.yellow[6],
+    '&:hover': {
+      backgroundColor:
+        theme.colorScheme === 'dark'
+          ? theme.colors.yellow[6]
+          : theme.colors.yellow[7],
+    },
+  },
+  downloadButton: {
+    color: theme.colors.yellow[3],
+    borderColor: theme.colors.yellow[6],
+    // backgroundColor:
+    //   theme.colorScheme === 'dark'
+    //     ? theme.colors.green[5]
+    //     : theme.colors.green[6],
+    // '&:hover': {
+    //   backgroundColor:
+    //     theme.colorScheme === 'dark'
+    //       ? theme.colors.green[6]
+    //       : theme.colors.green[7],
+    // },
+  },
 }));
 
 interface FormContainerProps {
@@ -177,6 +203,7 @@ const FormContainer = ({ form }: FormContainerProps) => {
           <Group position="center" mt="md">
             <Button
               onClick={() => form.addListItem('data', { key: '', value: '' })}
+              className={classes.button}
             >
               Add fields
             </Button>
@@ -184,7 +211,9 @@ const FormContainer = ({ form }: FormContainerProps) => {
         </Box>
       </Paper>
       {!error && jsonAvailable && <Text color="green">Json is valid!</Text>}
-      <Button onClick={() => handleJsonGeneration()}>Generate Data Json</Button>
+      <Button onClick={() => handleJsonGeneration()} className={classes.button}>
+        Generate Data Json
+      </Button>
 
       {jsonAvailable && (
         <Button
@@ -192,6 +221,7 @@ const FormContainer = ({ form }: FormContainerProps) => {
           onClick={() =>
             downloadJsonDataFile(convertFormToJson(form.values.data))
           }
+          className={classes.downloadButton}
         >
           Download Json Data
         </Button>

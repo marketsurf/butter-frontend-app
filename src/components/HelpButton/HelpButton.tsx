@@ -21,7 +21,7 @@ const HelpButton = () => {
       </Modal>
       <ActionIcon
         variant="transparent"
-        color="blue"
+        color="yellow"
         onClick={() => setOpened(true)}
       >
         <Help />

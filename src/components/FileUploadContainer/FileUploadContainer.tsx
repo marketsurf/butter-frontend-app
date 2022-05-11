@@ -38,6 +38,13 @@ const useStyles = createStyles((theme) => ({
     left: 'calc(50% - 125px)',
     bottom: -20,
     zIndex: 1,
+    backgroundColor: theme.colors.yellow[6],
+    '&:hover': {
+      backgroundColor:
+        theme.colorScheme === 'dark'
+          ? theme.colors.yellow[7]
+          : theme.colors.yellow[0],
+    },
   },
 }));
 
