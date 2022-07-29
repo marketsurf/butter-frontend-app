@@ -2,7 +2,7 @@ import { DocumentContext } from '@/common/context/document';
 import DocumentTypeSelectionContainer from '@/components/DocumentTypeSelectionContainer';
 import FileUploadContainer from '@/components/FileUploadContainer';
 import Layout from '@/components/Layout';
-import useWindowSize from '@/hooks/useWindowSize';
+
 import {
   Box,
   Button,

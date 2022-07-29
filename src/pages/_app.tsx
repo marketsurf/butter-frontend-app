@@ -9,7 +9,6 @@ import {
 } from '@mantine/core';
 import { useState } from 'react';
 import DocumentProvider from '@/common/context/document';
-import useWindowSize from '@/hooks/useWindowSize';
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;

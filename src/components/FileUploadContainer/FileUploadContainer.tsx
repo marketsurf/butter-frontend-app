@@ -83,28 +83,34 @@ const FileUploadContainer = () => {
 
           const reader = new FileReader();
 
-          reader.readAsArrayBuffer(file);
+          // reader.readAsArrayBuffer(file);
+          reader.readAsDataURL(file);
 
           reader.onload = async (e) => {
-            const arrayBuffer = e.target?.result;
-            if (arrayBuffer) {
-              const blob = new Blob([arrayBuffer], {
-                type: MIME_TYPES.pdf,
-              });
-              const formData = new FormData();
-              formData.append('file', blob);
+            // const arrayBuffer = e.target?.result;
+            // if (arrayBuffer) {
+            //   const blob = new Blob([arrayBuffer], {
+            //     type: MIME_TYPES.pdf,
+            //   });
+            //   const formData = new FormData();
+            //   formData.append('file', blob);
 
-              const { data } = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/ocr`,
-                formData,
+            // }
+            const base64 = e.target?.result as string;
+
+            if (base64) {
+              const { data } = await axios.post<{ text: string[] }>(
+                `${process.env.NEXT_PUBLIC_API_URL}/api/ocr`,
+                {
+                  pdf: base64.split(',')[1],
+                },
                 {
                   headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
                   },
                 },
               );
-
-              setDocumentContent(formatData(data.data));
+              setDocumentContent(formatData(data.text));
               setProcessing(false);
             }
           };
