@@ -17,8 +17,6 @@ export default function App(props: AppProps) {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
-  const { width, _ } = useWindowSize();
-
   return (
     <>
       <Head>
@@ -39,22 +37,7 @@ export default function App(props: AppProps) {
           theme={{ colorScheme }}
         >
           <DocumentProvider>
-            {(width ?? 1920) < 768 ? (
-              <>
-                <Center
-                  style={{
-                    width: '100vw',
-                    height: '100vh',
-                  }}
-                >
-                  <Title align="center">
-                    Sorry, this website is only available on desktop devices.
-                  </Title>
-                </Center>
-              </>
-            ) : (
-              <Component {...pageProps} />
-            )}
+            <Component {...pageProps} />
           </DocumentProvider>
         </MantineProvider>
       </ColorSchemeProvider>
