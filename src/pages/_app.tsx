@@ -1,11 +1,9 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import {
-  Center,
   ColorScheme,
   ColorSchemeProvider,
   MantineProvider,
-  Title,
 } from '@mantine/core';
 import { useState } from 'react';
 import DocumentProvider from '@/common/context/document';

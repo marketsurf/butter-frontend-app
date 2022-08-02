@@ -53,7 +53,7 @@ const documentReducer = (state: DocumentState, action: DocumentActions) => {
 export const DocumentContext = createContext<DocumentState>(initialState);
 
 interface DocumentProviderProps {
-  children: ReactNode;
+  children: JSX.Element;
 }
 
 const DocumentProvider = ({ children }: DocumentProviderProps) => {
