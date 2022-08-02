@@ -65,16 +65,6 @@ const useStyles = createStyles((theme) => ({
   downloadButton: {
     color: theme.colors.yellow[3],
     borderColor: theme.colors.yellow[6],
-    // backgroundColor:
-    //   theme.colorScheme === 'dark'
-    //     ? theme.colors.green[5]
-    //     : theme.colors.green[6],
-    // '&:hover': {
-    //   backgroundColor:
-    //     theme.colorScheme === 'dark'
-    //       ? theme.colors.green[6]
-    //       : theme.colors.green[7],
-    // },
   },
 }));
 

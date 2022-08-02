@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { createStyles, Navbar, ScrollArea, Text } from '@mantine/core';
 import { GripVertical } from 'tabler-icons-react';
 
