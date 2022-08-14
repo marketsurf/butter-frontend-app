@@ -100,7 +100,7 @@ const FileUploadContainer = () => {
 
             if (base64) {
               const { data } = await axios.post<{ text: string[] }>(
-                `${process.env.NEXT_PUBLIC_API_URL}/api/ocr`,
+                `${process.env.NEXT_PUBLIC_API_URL}/ocr`,
                 {
                   pdf: base64.split(',')[1],
                 },
